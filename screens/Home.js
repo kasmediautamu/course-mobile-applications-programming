@@ -33,7 +33,9 @@ const Home = () => {
             renderItem={({ item }) => <NFTCard data={item} />}
             keyExtractor={(item) => item.id}
             showsVerticalScrollIndicator={false}
-            ListHeaderComponent={<HomeHeader onSearch={handleSearch} />}
+            ListHeaderComponent={
+              <HomeHeader onSearch={handleSearch} isLogin={false} />
+            }
           />
         </View>
 
@@ -47,8 +49,7 @@ const Home = () => {
             zIndex: -1,
           }}
         >
-          <View
-            style={{ height: 300, backgroundColor: COLORS.primary }} />
+          <View style={{ height: 300, backgroundColor: COLORS.primary }} />
           <View style={{ flex: 1, backgroundColor: COLORS.white }} />
         </View>
       </View>
