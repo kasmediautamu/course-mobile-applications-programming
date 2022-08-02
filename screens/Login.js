@@ -47,6 +47,13 @@ const Login = ({ route, navigation }) => {
   // const { data } = route.params;
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+  const loginUser = () => {
+    if (username.length > 0 && password.length > 0) {
+      navigation.navigate("Home");
+    }
+    setError(true);
+  };
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar
@@ -86,8 +93,14 @@ const Login = ({ route, navigation }) => {
           fontSize={SIZES.large}
           {...SHADOWS.dark}
           isBid={false}
+          handlePress={loginUser}
         />
       </View>
+      {error && (
+        <View>
+          <Text style={{ color: COLORS.secondary }}>Wrong credentials</Text>
+        </View>
+      )}
     </SafeAreaView>
   );
 };

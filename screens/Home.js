@@ -34,7 +34,7 @@ const Home = () => {
             keyExtractor={(item) => item.id}
             showsVerticalScrollIndicator={false}
             ListHeaderComponent={
-              <HomeHeader onSearch={handleSearch} isLogin={false} />
+              <HomeHeader onSearch={handleSearch} isLogin={true} />
             }
           />
         </View>
