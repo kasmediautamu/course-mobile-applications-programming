@@ -4,7 +4,8 @@ import { RectButton, CircleButton } from "./Button";
 import { SubInfo, People, EndDate, EthPrice, NFTTitle } from "./SubInfo";
 import DetailsBid from "./DetailsBid";
 import FocusedStatusBar from "./FocusedStatusBar";
-import DetailsDesc from './DetailsDesc';
+import DetailsDesc from "./DetailsDesc";
+import { CustomTextInput } from "./TextInput";
 
 export {
   HomeHeader,
@@ -19,4 +20,5 @@ export {
   DetailsBid,
   FocusedStatusBar,
   DetailsDesc,
+  CustomTextInput,
 };

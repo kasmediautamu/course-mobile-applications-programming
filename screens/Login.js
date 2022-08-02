@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -16,9 +16,11 @@ import {
   DetailsDesc,
   DetailsBid,
   FocusedStatusBar,
+  CustomTextInput,
+  HomeHeader,
 } from "../components";
 
-const DetailsHeader = ({ data, navigation }) => (
+const LoginHeader = ({ data, navigation }) => (
   <View style={{ width: "100%", height: 373 }}>
     <Image
       source={data.image}
@@ -41,9 +43,10 @@ const DetailsHeader = ({ data, navigation }) => (
   </View>
 );
 
-const Details = ({ route, navigation }) => {
-  const { data } = route.params;
-
+const Login = ({ route, navigation }) => {
+  // const { data } = route.params;
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar
@@ -51,12 +54,26 @@ const Details = ({ route, navigation }) => {
         backgroundColor="transparent"
         translucent={true}
       />
-
+      <HomeHeader isLogin={true} />
+      <View>
+        <CustomTextInput
+          onChangeText={(newUsername) => setUsername(newUsername)}
+          defaultValue={username}
+          label={"Username"}
+          placeholder={"Enter user name"}
+        />
+        <CustomTextInput
+          onChangeText={(newPassword) => setPassword(newPassword)}
+          defaultValue={password}
+          label={"Password"}
+          placeholder={"Enter password"}
+        />
+      </View>
       <View
         style={{
           width: "100%",
           position: "absolute",
-          bottom: 0,
+          bottom: "30%",
           paddingVertical: SIZES.font,
           justifyContent: "center",
           alignItems: "center",
@@ -68,43 +85,11 @@ const Details = ({ route, navigation }) => {
           minWidth={170}
           fontSize={SIZES.large}
           {...SHADOWS.dark}
-          handlePress={() => navigation.navigate("Login")}
-          isBid={true}
+          isBid={false}
         />
       </View>
-
-      <FlatList
-        data={data.bids}
-        renderItem={({ item }) => <DetailsBid bid={item} />}
-        keyExtractor={(item) => item.id}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{
-          paddingBottom: SIZES.extraLarge * 3,
-        }}
-        ListHeaderComponent={() => (
-          <React.Fragment>
-            <DetailsHeader data={data} navigation={navigation} />
-            <SubInfo />
-            <View style={{ paddingpaddingpadding: SIZES.font }}>
-              <DetailsDesc data={data} />
-
-              {data.bids.length > 0 && (
-                <Text
-                  style={{
-                    fontSize: SIZES.font,
-                    fontFamily: FONTS.semiBold,
-                    color: COLORS.primary,
-                  }}
-                >
-                  Current Bid
-                </Text>
-              )}
-            </View>
-          </React.Fragment>
-        )}
-      />
     </SafeAreaView>
   );
 };
 
-export default Details;
+export default Login;

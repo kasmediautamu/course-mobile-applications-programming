@@ -1,3 +1,8 @@
+# Group Course work
+
+1. Kabuye Ivan - SEP15U01066
+2. Matsiko Jackson - JAN/20/BIST/016U
+
 # NFT Marketplace - using UI/UX React Native App
 
 ## About Project

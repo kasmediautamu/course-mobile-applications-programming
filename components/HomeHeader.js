@@ -3,7 +3,7 @@ import { View, Text, Image, TextInput } from "react-native";
 
 import { COLORS, FONTS, SIZES, assets } from "../constants";
 
-const HomeHeader = ({ onSearch }) => {
+const HomeHeader = ({ onSearch, isLogin }) => {
   return (
     <View
       style={{
@@ -53,29 +53,51 @@ const HomeHeader = ({ onSearch }) => {
           />
         </View>
       </View>
-
-      <View style={{ marginVertical: SIZES.font }}>
-        <Text
-          style={{
-            fontFamily: FONTS.regular,
-            fontSize: SIZES.small,
-            color: COLORS.white,
-          }}
-        >
-          Hello, Ivan! 👋
-        </Text>
-
-        <Text
-          style={{
-            fontFamily: FONTS.bold,
-            fontSize: SIZES.large,
-            color: COLORS.white,
-            marginTop: SIZES.base / 2,
-          }}
-        >
-          Yo Next Art Masterpiece
-        </Text>
-      </View>
+      {isLogin ? (
+        <View style={{ marginVertical: SIZES.font }}>
+          <Text
+            style={{
+              fontFamily: FONTS.regular,
+              fontSize: SIZES.small,
+              color: COLORS.white,
+            }}
+          >
+            Hello, Welcome to NFTs 👋
+          </Text>
+          <Text
+            style={{
+              fontFamily: FONTS.bold,
+              fontSize: SIZES.large,
+              color: COLORS.white,
+              marginTop: SIZES.base / 2,
+            }}
+          >
+            Yo Next Art Masterpiece
+          </Text>
+        </View>
+      ) : (
+        <View style={{ marginVertical: SIZES.font }}>
+          <Text
+            style={{
+              fontFamily: FONTS.regular,
+              fontSize: SIZES.small,
+              color: COLORS.white,
+            }}
+          >
+            Hello, Ivan! 👋
+          </Text>
+          <Text
+            style={{
+              fontFamily: FONTS.bold,
+              fontSize: SIZES.large,
+              color: COLORS.white,
+              marginTop: SIZES.base / 2,
+            }}
+          >
+            Yo Next Art Masterpiece
+          </Text>
+        </View>
+      )}
 
       <View style={{ marginTop: SIZES.font }}>
         <View
@@ -89,11 +111,16 @@ const HomeHeader = ({ onSearch }) => {
             paddingVertical: SIZES.small - 2,
           }}
         >
-          <Image
-            source={assets.search}
-            resizeMode="contain"
-            style={{ width: 20, height: 20, marginRight: SIZES.base }}
-          />
+          {isLogin ? (
+            <View></View>
+          ) : (
+            <Image
+              source={assets.search}
+              resizeMode="contain"
+              style={{ width: 20, height: 20, marginRight: SIZES.base }}
+            />
+          )}
+
           <TextInput
             placeholder="Search NFTs"
             style={{ flex: 1 }}
